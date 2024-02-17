@@ -7,14 +7,17 @@ const AddTransaction = () => {
     const [amount, setAmount] = useState(0)
   function handleSubmit(e) {
     e.preventDefault();
-    const newTransaction = {
-      id: Math.floor(Math.random() * 100000000),
-      text, 
-      amount: +amount
+    if (amount!==0 && text!=='') {
+      const newTransaction = {
+        id: Date.now(),
+        text, 
+        amount: +amount
+      }
+      addTransaction(newTransaction)
+      setText('')
+      setAmount(0)
     }
-    addTransaction(newTransaction)
-    setText('')
-    setAmount(0)
+    
   }
   return (
     <>
